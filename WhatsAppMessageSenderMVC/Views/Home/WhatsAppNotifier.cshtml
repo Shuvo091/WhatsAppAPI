@@ -1,0 +1,37 @@
+﻿@model WhatsApp.API.WhatsAppNotifierPayLoad
+
+@{
+    ViewBag.Title = "WhatsApp Notifier";
+}
+
+<h2>WhatsApp Notifier Form</h2>
+
+@using (Html.BeginForm("SendWhatsAppNotification", "Home", FormMethod.Post))
+{
+    <div class="form-group" style="display: none;">
+        @Html.LabelFor(model => model.AccountSid, "Account SID:")
+        @Html.TextBoxFor(model => model.AccountSid, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group" style="display: none;">
+        @Html.LabelFor(model => model.AuthToken, "Auth Token:")
+        @Html.TextBoxFor(model => model.AuthToken, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group" style="display: none;">
+        @Html.LabelFor(model => model.FromNumber, "From Number:")
+        @Html.TextBoxFor(model => model.FromNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToNumber, "To Number:")
+        @Html.TextBoxFor(model => model.ToNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message, "Message:")
+        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = 4 })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send WhatsApp Message</button>
+}
